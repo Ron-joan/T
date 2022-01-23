@@ -1,0 +1,52 @@
+﻿<Window x:Class="www.Pages.ShellView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:www.Pages"
+        mc:Ignorable="d"
+        Title="Stylet Start Project" Height="800" Width="800"
+        xmlns:s="https://github.com/canton7/Stylet" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:execlexport="clr-namespace:www.Pages.ExeclExport"
+        d:DataContext="{d:DesignInstance local:ShellViewModel}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <materialDesign:Card s:View.ActionTarget="{Binding execlExportViewModel}" Margin="3">
+            <execlexport:ExeclExportView  Margin="8" DataContext="{Binding execlExportViewModel}" />
+        </materialDesign:Card>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignHeadline3TextBlock}">基线电阻</TextBlock>
+            <Button  VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Cursor="Hand" Command="{s:Action Go}" Content="{Binding StartLabel}"></Button>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignHeadline3TextBlock}">甲烷检测</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" Text="{Binding oneValue}" Grid.Column="1"/>
+            <TextBox VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Column="2" Text="{Binding oneTime}" FontSize="24" Cursor="IBeam" Style="{DynamicResource MaterialDesignFilledTextBox}"/>
+        </Grid>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignHeadline3TextBlock}">硫化氢检测</TextBlock>
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" Text="{Binding twoValue}" Grid.Column="1"/>
+            <TextBox VerticalAlignment="Center" HorizontalAlignment="Center"
+                Grid.Column="2" Text="{Binding twoTime}" FontSize="24" Cursor="IBeam" Style="{DynamicResource MaterialDesignFilledTextBox}" />
+        </Grid>
+    </Grid>
+</Window>
